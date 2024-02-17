@@ -26,7 +26,7 @@ namespace OnlineEditorAPI.Controllers
             return Ok(files);
         }
 
-        [SwaggerOperation(description: "Get JSON file")]
+        [SwaggerOperation(description: "Get file")]
         [SwaggerResponse(200, "File is retrieved", typeof(string))]
         [HttpGet("{name}")]
         public IActionResult GetFileData(string name)
