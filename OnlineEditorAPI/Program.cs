@@ -13,7 +13,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "myCors",
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:3000")
+                          policy.WithOrigins("http://localhost:3000", "https://nice-sea-0e687dd03.4.azurestaticapps.net")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
