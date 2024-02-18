@@ -8,32 +8,32 @@ public static class MockDatabase
     {
         new FileModel
         {
-            Name = "test1",
+            Name = "test1.json",
             Data = @"
             {
               ""id"": 1,
-              ""name"": ""Emily Jones"",
-              ""email"": ""emilyjones@example.com""
+              ""name"": ""Jon"",
+              ""email"": ""jon@example.com""
             }",
         },
         new FileModel
         {
-            Name = "test2",
+            Name = "test2.json",
             Data = @"
             {
               ""id"": 2,
-              ""name"": ""Emily Jones"",
-              ""email"": ""emilyjones@example.com""
+              ""name"": ""Dave"",
+              ""email"": ""dave@example.com""
             }",
         },
         new FileModel
         {
-            Name = "test3",
+            Name = "test3.json",
             Data = @"
             {
               ""id"": 3,
-              ""name"": ""Emily Jones"",
-              ""email"": ""emilyjones@example.com""
+              ""name"": ""Emily"",
+              ""email"": ""emily@example.com""
             }",
         },
     };

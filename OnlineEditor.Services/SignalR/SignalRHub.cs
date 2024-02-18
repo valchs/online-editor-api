@@ -11,10 +11,21 @@ public class SignalRHub : Hub
 	{
 		_fileService = fileService ?? throw new ArgumentNullException(nameof(fileService));
 	}
-    public async Task BroadcastTextChange(string fileName, string newText, string userName)
+
+	public async Task JoinFileGroup(string fileName)
+	{
+		await Groups.AddToGroupAsync(Context.ConnectionId, fileName);
+	}
+
+	public async Task LeaveFileGroup(string fileName)
+	{
+		await Groups.RemoveFromGroupAsync(Context.ConnectionId, fileName);
+	}
+
+	public async Task BroadcastTextChange(string fileName, string newText, string userName)
     {
 		_fileService.Update(fileName, newText);
 
-        await Clients.Others.SendAsync("ReceiveTextChange", newText, userName);
+		await Clients.Group(fileName).SendAsync("ReceiveTextChange", newText, userName);
     }
 }

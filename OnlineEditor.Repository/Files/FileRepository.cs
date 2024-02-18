@@ -6,8 +6,6 @@ public class FileRepository : IFileRepository
 {
 	public List<FileModel> Get()
 	{
-		Update("test1", "aa");
-		GetByName("test1");
 		return MockDatabase.Files;
 	}
 

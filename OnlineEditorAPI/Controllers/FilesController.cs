@@ -17,7 +17,7 @@ namespace OnlineEditorAPI.Controllers
 		}
 
         [SwaggerOperation(description: "Get list of files")]
-        [SwaggerResponse(200, "Files are retrieved", typeof(List<string>))]
+        [SwaggerResponse(200, "Files are retrieved", typeof(List<FileModel>))]
         [HttpGet]
         public IActionResult Get()
         {
@@ -27,20 +27,18 @@ namespace OnlineEditorAPI.Controllers
         }
 
         [SwaggerOperation(description: "Get file")]
-        [SwaggerResponse(200, "File is retrieved", typeof(string))]
+        [SwaggerResponse(200, "File is retrieved", typeof(FileModel))]
         [HttpGet("{name}")]
-        public IActionResult GetFileData(string name)
+        public IActionResult GetByName(string name)
         {
-			try
-			{
-				FileModel file = _fileService.GetByName(name);
+			FileModel file = _fileService.GetByName(name);
 
-				return Ok(file.Data);
-			}
-			catch (Exception)
+            if (file == null)
 			{
-				return BadRequest("File not found");
+                return NotFound("File not found");
 			}
+
+			return Ok(file);
         }
     }
 }
